@@ -163,7 +163,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         scrollDirection: Axis.horizontal,
                         itemCount: 3,
                         itemBuilder: (ctx, index) {
-                          return _bloc.yourCardBox(size, setState, index);
+                          return SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                _bloc.yourCardBox(size, setState, index)
+                              ],
+                            ),
+                          );
                         },
                       ),
                     ),
