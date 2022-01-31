@@ -138,14 +138,14 @@ class HomeScreenBloc {
   /// -> Your Card Box
   ///
 
-  Column yourCardBox(Size size, Function setState) {
+  Column yourCardBox(Size size, Function setState, int index) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.only(left: 10),
           child: Text(
-            "Your Cards",
+            paymentCardDetails[index]['cardType'],
             style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
@@ -187,16 +187,16 @@ class HomeScreenBloc {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            "*62396",
-                            style: TextStyle(
+                          Text(
+                            paymentCardDetails[index]['cardId'],
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Image.network(
-                            "https://www.freepnglogos.com/uploads/visa-inc-png-18.png",
+                            paymentCardDetails[index]['cardLogo'],
                             width: 40,
                             height: 13,
                             color: Colors.white,
@@ -283,7 +283,7 @@ class HomeScreenBloc {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "*62396",
+                          paymentCardDetails[index]['cardId'],
                           style: TextStyle(
                             color: _gBloc.primaryColor,
                             fontSize: 14,
@@ -291,10 +291,9 @@ class HomeScreenBloc {
                           ),
                         ),
                         Image.network(
-                          "https://www.freepnglogos.com/uploads/visa-inc-png-18.png",
+                          paymentCardDetails[index]['cardLogo'],
                           width: 40,
-                          height: 13,
-                          color: _gBloc.primaryColor,
+                          height: 20,
                         ),
                       ],
                     ),
@@ -307,4 +306,23 @@ class HomeScreenBloc {
       ],
     );
   }
+
+  List<Map> paymentCardDetails = [
+    {
+      "cardType": "Visa Card",
+      "cardLogo": "https://www.freepnglogos.com/uploads/visa-inc-png-18.png",
+      "cardId": "*62396",
+    },
+    {
+      "cardType": "Master Card",
+      "cardLogo":
+          "https://www.pngplay.com/wp-content/uploads/13/Master-Card-Logo-PNG-Images-HD.png",
+      "cardId": "*77796",
+    },
+    {
+      "cardType": 'Visa Card',
+      "cardLogo": "https://www.freepnglogos.com/uploads/visa-inc-png-18.png",
+      "cardId": "*64578",
+    },
+  ];
 }

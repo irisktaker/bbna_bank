@@ -163,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         scrollDirection: Axis.horizontal,
                         itemCount: 3,
                         itemBuilder: (ctx, index) {
-                          return _bloc.yourCardBox(size, setState);
+                          return _bloc.yourCardBox(size, setState, index);
                         },
                       ),
                     ),
