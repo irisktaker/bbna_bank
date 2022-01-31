@@ -76,55 +76,56 @@ class _HomeScreenState extends State<HomeScreen> {
                 left: 20,
                 right: 20,
                 child: Container(
-                  height: 180,
+                  height: 190,
                   width: size.width,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24,
-                    vertical: 12,
+                    vertical: 10,
                   ),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "your accounts".toUpperCase(),
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: _gBloc.primaryColor,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "your accounts".toUpperCase(),
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: _gBloc.primaryColor,
+                              ),
                             ),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.more_horiz,
-                              size: 28,
-                              color: Colors.grey,
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.more_horiz,
+                                size: 28,
+                                color: Colors.grey,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      _bloc.accounts(
-                        accountId: "001ah7297",
-                        branchId: "*37265",
-                        accountBalance: "20,000",
-                      ),
-                      const SizedBox(height: 4),
-                      const Divider(),
-                      const SizedBox(height: 4),
-                      _bloc.accounts(
-                        accountId: "001ah7246",
-                        branchId: "*36264",
-                        accountBalance: "158,000",
-                      ),
-                    ],
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        _bloc.accounts(
+                          accountId: "001ah7297",
+                          branchId: "*37265",
+                          accountBalance: "20,000",
+                        ),
+                        const SizedBox(height: 3),
+                        const Divider(),
+                        const SizedBox(height: 3),
+                        _bloc.accounts(
+                          accountId: "001ah7246",
+                          branchId: "*36264",
+                          accountBalance: "158,000",
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -134,11 +135,12 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               color: Colors.blue[50],
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 10),
                   Container(
                     width: size.width,
-                    height: 120,
+                    height: 130,
                     color: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 15),
                     child: ListView.builder(
@@ -181,14 +183,58 @@ class _HomeScreenState extends State<HomeScreen> {
                                   children: [
                                     Container(
                                       width: size.width * 0.55,
-                                      height: 150,
+                                      height: 130,
+                                      padding: const EdgeInsets.all(16),
                                       decoration: BoxDecoration(
-                                        color: Colors.green,
+                                        color: _gBloc.primaryColor,
                                         borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/bbva_logo.png',
+                                            scale: 3,
+                                          ),
+                                          const SizedBox(height: 16),
+                                          Container(
+                                            width: 30,
+                                            height: 20,
+                                            decoration: BoxDecoration(
+                                              color: Colors.yellow,
+                                              borderRadius:
+                                                  BorderRadius.circular(4),
+                                            ),
+                                          ),
+                                          const SizedBox(height: 22),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              const Text(
+                                                "*62396",
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Image.network(
+                                                "https://www.freepnglogos.com/uploads/visa-inc-png-18.png",
+                                                width: 40,
+                                                height: 13,
+                                                color: Colors.white,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
                                       ),
                                     ),
                                     const SizedBox(height: 12),
                                     Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Icon(
                                           Icons.payment,
@@ -232,10 +278,58 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Container(
                                   width: size.width * 0.35,
-                                  height: 200,
+                                  height: 180,
+                                  padding: const EdgeInsets.all(16),
                                   decoration: BoxDecoration(
-                                    color: Colors.green,
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  // transform: Matrix4.,
+                                  child: RotatedBox(
+                                    quarterTurns: 3,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Image.asset(
+                                          'assets/images/bbva_logo_light.png',
+                                          scale: 3,
+                                        ),
+                                        const SizedBox(height: 16),
+                                        Container(
+                                          width: 30,
+                                          height: 20,
+                                          decoration: BoxDecoration(
+                                            color: Colors.yellow,
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 22),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "*62396",
+                                              style: TextStyle(
+                                                color: _gBloc.primaryColor,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Image.network(
+                                              "https://www.freepnglogos.com/uploads/visa-inc-png-18.png",
+                                              width: 40,
+                                              height: 13,
+                                              color: _gBloc.primaryColor,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
