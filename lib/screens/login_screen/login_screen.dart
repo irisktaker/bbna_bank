@@ -15,20 +15,28 @@ class _LoginScreenState extends State<LoginScreen> {
   final LoginScreenBloc _bloc = LoginScreenBloc();
   final GlobalVariables _gBloc = GlobalVariables();
 
+  bool _keyboardVisible = false;
+
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
+    _keyboardVisible = MediaQuery.of(context).viewInsets.bottom != 0;
+
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -109,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       "I forgot my password",
                       style: TextStyle(color: _gBloc.secondaryColor),
                     )),
-                    SizedBox(height: size.height * 0.09),
+                    SizedBox(height: size.height * 0.08),
                     DefaultTextStyle(
                       style: TextStyle(
                         color: _gBloc.secondaryColor,
@@ -174,17 +182,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ),
-            ),
-            Expanded(child: Container()),
-            const Align(
-              alignment: Alignment.bottomCenter,
-              child: Divider(
-                height: 10,
-                thickness: 10,
-                color: Color(0xFF1A237E),
+              Expanded(child: Container()),
+              const Align(
+                alignment: Alignment.bottomCenter,
+                child: Divider(
+                  height: 10,
+                  thickness: 10,
+                  color: Color(0xFF1A237E),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
