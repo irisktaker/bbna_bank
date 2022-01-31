@@ -1,9 +1,12 @@
 import 'package:bbva_bank/util/global_variables.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 final GlobalVariables _gBloc = GlobalVariables();
 
 class HomeScreenBloc {
+  bool isSwitched = true;
+
   /// ######################################################################
   /// -> Your account Box
   ///
@@ -132,6 +135,194 @@ class HomeScreenBloc {
   ];
 
   /// ######################################################################
-  /// ->
+  /// -> Your Card Box
   ///
+
+  Column yourCardBox(Size size, Function setState, int index) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Text(
+            paymentCardDetails[index]['cardType'],
+            style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: _gBloc.primaryColor),
+          ),
+        ),
+        const SizedBox(height: 16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: size.width * 0.55,
+                  height: 130,
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: _gBloc.primaryColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                        'assets/images/bbva_logo.png',
+                        scale: 3,
+                      ),
+                      const SizedBox(height: 16),
+                      Container(
+                        width: 30,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          color: Colors.yellow,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
+                      const SizedBox(height: 22),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            paymentCardDetails[index]['cardId'],
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Image.network(
+                            paymentCardDetails[index]['cardLogo'],
+                            width: 40,
+                            height: 13,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.payment,
+                      size: 20,
+                      color: _gBloc.secondaryColor,
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      "Digital Card",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: _gBloc.secondaryColor,
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    Text(
+                      "Deactivate",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: _gBloc.secondaryColor,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 30,
+                      height: 10,
+                      child: Transform.scale(
+                        scale: 0.4,
+                        child: CupertinoSwitch(
+                          value: isSwitched,
+                          onChanged: (value) {
+                            setState(() {
+                              isSwitched = value;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Container(
+              width: size.width * 0.35,
+              height: 180,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              // transform: Matrix4.,
+              child: RotatedBox(
+                quarterTurns: 3,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      'assets/images/bbva_logo_light.png',
+                      scale: 3,
+                    ),
+                    const SizedBox(height: 16),
+                    Container(
+                      width: 30,
+                      height: 20,
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    const SizedBox(height: 22),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          paymentCardDetails[index]['cardId'],
+                          style: TextStyle(
+                            color: _gBloc.primaryColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Image.network(
+                          paymentCardDetails[index]['cardLogo'],
+                          width: 40,
+                          height: 20,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  List<Map> paymentCardDetails = [
+    {
+      "cardType": "Visa Card",
+      "cardLogo": "https://www.freepnglogos.com/uploads/visa-inc-png-18.png",
+      "cardId": "*62396",
+    },
+    {
+      "cardType": "Master Card",
+      "cardLogo":
+          "https://www.pngplay.com/wp-content/uploads/13/Master-Card-Logo-PNG-Images-HD.png",
+      "cardId": "*77796",
+    },
+    {
+      "cardType": 'Visa Card',
+      "cardLogo": "https://www.freepnglogos.com/uploads/visa-inc-png-18.png",
+      "cardId": "*64578",
+    },
+  ];
 }
