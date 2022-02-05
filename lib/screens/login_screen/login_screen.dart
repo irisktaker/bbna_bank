@@ -25,12 +25,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
     _keyboardVisible = MediaQuery.of(context).viewInsets.bottom != 0;
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: Form(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.white,
+        body: Form(
           key: _formKey,
           child: Column(
             children: [
