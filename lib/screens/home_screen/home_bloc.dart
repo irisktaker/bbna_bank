@@ -80,7 +80,7 @@ class HomeScreenBloc {
             onTap: onTap,
             child: CircleAvatar(
               backgroundColor: color,
-              radius: 33,
+              radius: 28,
               child: Icon(
                 icon,
                 color: Colors.white,
@@ -94,7 +94,7 @@ class HomeScreenBloc {
           title,
           style: TextStyle(
             color: _gBloc.secondaryColor,
-            fontSize: 12,
+            fontSize: 11,
           ),
         ),
       ],
@@ -250,12 +250,15 @@ class HomeScreenBloc {
                 ),
               ],
             ),
+            const SizedBox(
+              width: 8,
+            ),
             Container(
               width: size.width * 0.35,
               height: 180,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(12),
               ),
               // transform: Matrix4.,
