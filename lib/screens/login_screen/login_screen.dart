@@ -91,12 +91,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: _bloc.passwordController,
                       obscureText: _bloc.isHidden,
                       style: TextStyle(color: _gBloc.primaryColor),
-                      onSubmitted: (value) => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (ctx) => const HomeScreen(),
-                        ),
-                      ),
+                      onSubmitted: (value) {
+                        if (value.isNotEmpty) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (ctx) => const HomeScreen(),
+                            ),
+                          );
+                        }
+                      },
                       decoration: InputDecoration(
                         border: _bloc.underlineInputBorder,
                         enabledBorder: _bloc.underlineInputBorder,
