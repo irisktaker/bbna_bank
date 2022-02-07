@@ -1,4 +1,4 @@
-import 'package:bbva_bank/screens/home_screen/home_bloc.dart';
+import '/screens/home_screen/home_bloc.dart';
 import 'package:bbva_bank/util/global_variables.dart';
 import 'package:flutter/material.dart';
 
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   left: 20,
                   right: 20,
                   child: Container(
-                    height: 170,
+                    height: size.height * 0.24,
                     width: size.width,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 24,
